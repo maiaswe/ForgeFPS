@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ForgeFPS.Benchmarking</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForgeFPS.Domain\ForgeFPS.Domain.csproj" />
+    <ProjectReference Include="..\ForgeFPS.Contracts\ForgeFPS.Contracts.csproj" />
+    <ProjectReference Include="..\ForgeFPS.Shared\ForgeFPS.Shared.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,42 @@
+<Window
+    x:Class="ForgeFPS.App.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="ForgeFPS - Otimizador de Games"
+    Width="1280"
+    Height="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar Navigation -->
+        <NavigationView
+            x:Name="NavigationView"
+            Grid.Column="0"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="False"
+            SelectionChanged="NavigationView_SelectionChanged">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Início" Tag="Home" Icon="Home"/>
+                <NavigationViewItem Content="Jogos" Tag="Games" Icon="Game"/>
+                <NavigationViewItem Content="CS2" Tag="CS2" Icon="Game"/>
+                <NavigationViewItem Content="Windows" Tag="Windows" Icon="Globe"/>
+                <NavigationViewItem Content="Benchmark" Tag="Benchmark" Icon="Chart"/>
+                <NavigationViewItem Content="Histórico" Tag="History" Icon="History"/>
+                <NavigationViewItem Content="Diagnóstico" Tag="Diagnostic" Icon="Warning"/>
+            </NavigationView.MenuItems>
+        </NavigationView>
+
+        <!-- Main Content Area -->
+        <Frame
+            x:Name="ContentFrame"
+            Grid.Column="1"
+            Margin="24,16"/>
+    </Grid>
+</Window>

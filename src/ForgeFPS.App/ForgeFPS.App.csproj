@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputType>WinExe</OutputType>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <RootNamespace>ForgeFPS.App</RootNamespace>
+    <AssemblyName>ForgeFPS.App</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\WindowIcon.ico</ApplicationIcon>
+    <Company>ForgeFPS</Company>
+    <Product>ForgeFPS</Product>
+    <Authors>ForgeFPS Team</Authors>
+    <Description>ForgeFPS - Windows and CS2 optimizer</Description>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250606001" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="9.0.3" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.10" />
+    <PackageReference Include="Serilog" Version="4.2.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ForgeFPS.Domain\ForgeFPS.Domain.csproj" />
+    <ProjectReference Include="..\ForgeFPS.Contracts\ForgeFPS.Contracts.csproj" />
+    <ProjectReference Include="..\ForgeFPS.Shared\ForgeFPS.Shared.csproj" />
+    <ProjectReference Include="..\ForgeFPS.Application\ForgeFPS.Application.csproj" />
+    <ProjectReference Include="..\ForgeFPS.Infrastructure.Windows\ForgeFPS.Infrastructure.Windows.csproj" />
+    <ProjectReference Include="..\ForgeFPS.Games.Abstractions\ForgeFPS.Games.Abstractions.csproj" />
+    <ProjectReference Include="..\ForgeFPS.Games.CS2\ForgeFPS.Games.CS2.csproj" />
+    <ProjectReference Include="..\ForgeFPS.Benchmarking\ForgeFPS.Benchmarking.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml" Generator="MSBuild:Compile" />
+    <Page Update="MainWindow.xaml" Generator="MSBuild:Compile" SubType="Designer" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <Authors>ForgeFPS Team</Authors>
+    <Company>ForgeFPS</Company>
+    <Product>ForgeFPS</Product>
+    <Description>ForgeFPS - Otimizador de Games para Windows e Counter-Strike 2</Description>
+    <Copyright>Copyright (c) ForgeFPS Team</Copyright>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+</Project>
