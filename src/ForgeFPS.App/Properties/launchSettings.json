@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ForgeFPS.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ForgeFPS.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
