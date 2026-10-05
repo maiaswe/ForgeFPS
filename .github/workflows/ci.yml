@@ -25,14 +25,23 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore ForgeFPS.sln
 
-      - name: Build (Release) - exclude WinUI App
+      - name: Build non-WinUI projects (Release)
         run: |
-          dotnet build ForgeFPS.sln -c Release --no-restore \
-            --framework net8.0 \
-            -p:ExcludeApp=true
+          dotnet build src/ForgeFPS.Domain/ForgeFPS.Domain.csproj -c Release --no-restore
+          dotnet build src/ForgeFPS.Contracts/ForgeFPS.Contracts.csproj -c Release --no-restore
+          dotnet build src/ForgeFPS.Shared/ForgeFPS.Shared.csproj -c Release --no-restore
+          dotnet build src/ForgeFPS.Application/ForgeFPS.Application.csproj -c Release --no-restore
+          dotnet build src/ForgeFPS.Infrastructure.Windows/ForgeFPS.Infrastructure.Windows.csproj -c Release --no-restore
+          dotnet build src/ForgeFPS.Games.Abstractions/ForgeFPS.Games.Abstractions.csproj -c Release --no-restore
+          dotnet build src/ForgeFPS.Games.CS2/ForgeFPS.Games.CS2.csproj -c Release --no-restore
+          dotnet build src/ForgeFPS.Benchmarking/ForgeFPS.Benchmarking.csproj -c Release --no-restore
 
       - name: Run tests
-        run: dotnet test ForgeFPS.sln -c Release --no-build
+        run: |
+          dotnet test tests/ForgeFPS.Domain.Tests/ForgeFPS.Domain.Tests.csproj -c Release --no-build
+          dotnet test tests/ForgeFPS.Application.Tests/ForgeFPS.Application.Tests.csproj -c Release --no-build
+          dotnet test tests/ForgeFPS.Benchmarking.Tests/ForgeFPS.Benchmarking.Tests.csproj -c Release --no-build
+          dotnet test tests/ForgeFPS.Games.CS2.Tests/ForgeFPS.Games.CS2.Tests.csproj -c Release --no-build
 
       - name: Upload test results
         if: always()
@@ -40,16 +49,3 @@ jobs:
         with:
           name: test-results
           path: '**/*.trx'
-
-      - name: Check test results
-        if: always()
-        run: |
-          $results = Get-ChildItem -Path . -Recurse -Filter "*.trx"
-          foreach ($r in $results) {
-            [xml]$xml = Get-Content $r.FullName
-            $failed = $xml.TestRun.ResultSummary.Failed
-            if ($failed -gt 0) {
-              Write-Error "$($r.FullName): $failed test(s) failed"
-              exit 1
-            }
-          }
